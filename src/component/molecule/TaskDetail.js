@@ -14,7 +14,7 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 
 
-function TaskDetail({taskName,onChangeName,onClickDelete}){
+function TaskDetail({taskName,onChangeName,onClickDelete,percentageTask}){
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
 
@@ -35,7 +35,7 @@ function TaskDetail({taskName,onChangeName,onClickDelete}){
         <Card variant="outlined">
             <CardContent>
                 <p>{taskName}</p>
-                <LinearProgressWithLabel value={70}  />
+                <LinearProgressWithLabel value={percentageTask}  />
             </CardContent>
             <CardActions>
                 <IconButton aria-controls="fade-menu" aria-haspopup="true" onClick={handleClick}> <MoreHorizOutlinedIcon fontSize="small" /> 
