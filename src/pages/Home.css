@@ -1,24 +1,24 @@
-.rectangle{
-    min-width: 68px;
-    min-height: 100%;
-  
-    background: #2F3136;
+.rectangle {
+  min-width: 68px;
+  min-height: 100%;
+  position: fixed;
+  background: #2f3136;
 }
-.content{
-    width: calc(100% - 68px);
+.content {
+  width: calc(100% - 68px);
+  margin-left: 68px;
 }
-.content p{
-    width: 174px;
-    height: 24px;
-    margin-left: 20px;
-    margin-top: 20px;
-    font-family: Rubik;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 24px;
-/* identical to box height, or 120% */
+.content p {
+  width: 174px;
+  height: 24px;
+  margin-left: 20px;
+  margin-top: 20px;
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height, or 120% */
 
-
-    color: #2F3136;
+  color: #2f3136;
 }
