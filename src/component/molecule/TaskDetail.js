@@ -10,6 +10,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Fade from "@material-ui/core/Fade";
 import ArrowRightAltOutlinedIcon from "@material-ui/icons/ArrowRightAltOutlined";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 
@@ -24,6 +25,9 @@ function TaskDetail({
   handleChangeIdTask,
   handleSelectName,
   handleSelectPercentage,
+  indexGroupTask,
+  moveTaskMethod,
+  toDoGroupLength,
 }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -51,6 +55,57 @@ function TaskDetail({
     handleClose();
     onClickDelete();
   };
+
+  const handleMoveRightTask = () => {
+    let targetIndex = indexGroupTask + 1;
+    // handleChangeIdTask(idTask);
+    // handleOnEdit(idGroupTask);
+    // console.log(idTask);
+    // console.log(idGroupTask);
+    moveTaskMethod(targetIndex, idGroupTask, idTask);
+  };
+
+  const handleMoveLeftTask = () => {
+    let targetIndex = indexGroupTask - 1;
+    // handleChangeIdTask(idTask);
+    // handleOnEdit(idGroupTask);
+    moveTaskMethod(targetIndex, idGroupTask, idTask);
+  };
+
+  const checkGroupTaskView = () => {
+    if (indexGroupTask == 0) {
+      return (
+        <MenuItem onClick={handleMoveRightTask}>
+          {" "}
+          <ArrowRightAltOutlinedIcon fontSize="small" />
+          Move Right
+        </MenuItem>
+      );
+    } else if (indexGroupTask == toDoGroupLength - 1) {
+      return (
+        <MenuItem onClick={handleMoveLeftTask}>
+          {" "}
+          <ArrowBackIcon fontSize="small" />
+          Move Left
+        </MenuItem>
+      );
+    } else {
+      return (
+        <div>
+          <MenuItem onClick={handleMoveLeftTask}>
+            {" "}
+            <ArrowBackIcon fontSize="small" />
+            Move Left
+          </MenuItem>
+          <MenuItem onClick={handleMoveRightTask}>
+            {" "}
+            <ArrowRightAltOutlinedIcon fontSize="small" />
+            Move Right
+          </MenuItem>
+        </div>
+      );
+    }
+  };
   return (
     <Card variant="outlined">
       <CardContent>
@@ -74,11 +129,7 @@ function TaskDetail({
           onClose={handleClose}
           TransitionComponent={Fade}
         >
-          <MenuItem onClick={handleClose}>
-            {" "}
-            <ArrowRightAltOutlinedIcon fontSize="small" />
-            Move Right
-          </MenuItem>
+          {checkGroupTaskView()}
           <MenuItem onClick={handleEditClick}>
             {" "}
             <EditOutlinedIcon fontSize="small" /> Edit{" "}

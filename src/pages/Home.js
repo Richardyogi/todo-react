@@ -108,6 +108,26 @@ function Home() {
       });
   };
 
+  const moveTask = (index, idGroup, idTask) => {
+    const token = sessionStorage.getItem("tokenLogin");
+    const config = {
+      headers: { Authorization: "Bearer " + token },
+    };
+    console.log(toDoGroup[index]);
+    const msg = {
+      target_todo_id: toDoGroup[index].id,
+    };
+    axios
+      .patch(
+        `https://todos-project-api.herokuapp.com/todos/${idGroup}/items/${idTask}`,
+        msg,
+        config
+      )
+      .then(() => {
+        setTrigger(!trigger);
+      });
+  };
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -148,7 +168,8 @@ function Home() {
     console.log(selectName);
   };
 
-  const groupTaskComponent = toDoGroup.map((res) => {
+  const groupTaskComponent = toDoGroup.map((res, index) => {
+    console.log(index);
     return (
       <Grid style={{ paddingLeft: "6px", paddingRight: "8px" }} item xs={3}>
         <GroupTask
@@ -163,6 +184,9 @@ function Home() {
           trigger={trigger}
           handleSelectName={handleSelectName}
           handleSelectPercentage={handleSelectPercentage}
+          indexGroupTask={index}
+          moveTaskMethod={moveTask}
+          toDoGroupLength={toDoGroup.length}
         />
       </Grid>
     );

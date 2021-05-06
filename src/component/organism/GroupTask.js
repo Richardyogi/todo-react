@@ -30,6 +30,9 @@ function GroupTask({
   handleChangeIdTask,
   handleSelectName,
   handleSelectPercentage,
+  indexGroupTask,
+  moveTaskMethod,
+  toDoGroupLength,
 }) {
   const classes = useStyles();
   const handleChangeModalName = () => {
@@ -72,6 +75,9 @@ function GroupTask({
         handleChangeIdTask={handleChangeIdTask}
         handleSelectName={handleSelectName}
         handleSelectPercentage={handleSelectPercentage}
+        indexGroupTask={indexGroupTask}
+        moveTaskMethod={moveTaskMethod}
+        toDoGroupLength={toDoGroupLength}
       />
     );
   });
