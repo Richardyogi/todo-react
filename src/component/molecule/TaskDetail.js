@@ -14,6 +14,12 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 
+const useStyles = makeStyles({
+  root: {
+    marginTop: "20px",
+  },
+});
+
 function TaskDetail({
   taskName,
   onChangeName,
@@ -31,6 +37,7 @@ function TaskDetail({
 }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const classes = useStyles();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -107,7 +114,7 @@ function TaskDetail({
     }
   };
   return (
-    <Card variant="outlined">
+    <Card variant="outlined" className={classes.root}>
       <CardContent>
         <p>{taskName}</p>
         <LinearProgressWithLabel value={percentageTask} />

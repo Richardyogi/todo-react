@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
     overflow: "hidden",
     outline: "none",
+    marginTop: "20px",
   },
 }));
 
